@@ -148,12 +148,11 @@ public class RealtimeBlurView extends View {
 					mBlurScript = ScriptIntrinsicBlur.create(mRenderScript, Element.U8_4(mRenderScript));
 				} catch (RSRuntimeException e) {
 					if (isDebug(getContext())) {
-//						if (e.getMessage() != null && e.getMessage().startsWith("Error loading RS jni library: java.lang.UnsatisfiedLinkError:")) {
-//							throw new RuntimeException("Error loading RS jni library, Upgrade buildToolsVersion=\"24.0.2\" or higher may solve this issue");
-//						} else {
-//							throw e;
-//						}
-						throw e;
+						if (e.getMessage() != null && e.getMessage().startsWith("Error loading RS jni library: java.lang.UnsatisfiedLinkError:")) {
+							throw new RuntimeException("Error loading RS jni library, Upgrade buildToolsVersion=\"24.0.2\" or higher may solve this issue");
+						} else {
+							throw e;
+						}
 					} else {
 						// In release mode, just ignore
 						releaseScript();

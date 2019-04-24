@@ -13,7 +13,6 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         renderscriptTargetApi 28
-        renderscriptSupportModeEnabled true
     }
 
     lintOptions {
